@@ -18,6 +18,10 @@ export default {
   components: {
     AvatarCard
   },
+  /*async asyncData ({ $axios }) {
+    let data = await $axios.$get('http://api.imgix.com/api/v1/assets/55e4d9390d42e03905934ad4?filter[categories]=Game%20of%20Thrones')
+    return {data}
+  } */
   asyncData() {
     imgix
       .request(
