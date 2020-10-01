@@ -12,7 +12,9 @@
 
 <script>
 import AvatarCard from '~/components/Avatarcard.vue'
-import imgix from '@/plugins/imgix-management.js'
+//import imgix from '@/plugins/imgix-management.js'
+import ImgixAPI from 'imgix-management-js'
+
 
 export default {
   components: {
@@ -21,13 +23,27 @@ export default {
   /*async asyncData ({ $axios }) {
     let data = await $axios.$get('http://api.imgix.com/api/v1/assets/55e4d9390d42e03905934ad4?filter[categories]=Game%20of%20Thrones')
     return {data}
-  } */
+  } 
   asyncData() {
     imgix
       .request(
         'assets/55e4d9390d42e03905934ad4?filter[categories]=Game%20of%20Thrones'
       )
       .then((response) => {
+        return {
+          data: response.data.data
+        }
+      })
+  }*/
+  asyncData() {
+    const imgix = new ImgixAPI({
+      apikey: '29250f0436aaedc6e03a725b5b39a45b4d248a684a7003a47e301903c1298002'
+    })
+    return imgix
+      .request(
+        'assets/55e4d9390d42e03905934ad4?filter[categories]=Game%20of%20Thrones'
+      )
+      .then((res) => {
         return {
           data: response.data.data
         }
