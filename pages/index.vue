@@ -22,10 +22,10 @@ export default {
   },
   /*async asyncData ({ $axios }) {
     let data = await $axios.$get('http://api.imgix.com/api/v1/assets/55e4d9390d42e03905934ad4?filter[categories]=Game%20of%20Thrones')
-    return {data}
+    return { data: response.data.data }
   } 
   asyncData() {
-    imgix
+    return imgix
       .request(
         'assets/55e4d9390d42e03905934ad4?filter[categories]=Game%20of%20Thrones'
       )
@@ -37,7 +37,7 @@ export default {
   }*/
   asyncData() {
     const imgix = new ImgixAPI({
-      apikey: '29250f0436aaedc6e03a725b5b39a45b4d248a684a7003a47e301903c1298002'
+      apiKey: '29250f0436aaedc6e03a725b5b39a45b4d248a684a7003a47e301903c1298002'
     })
     return imgix
       .request(
